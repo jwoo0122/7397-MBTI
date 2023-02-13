@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Questions from '../api/questionsApi.json';
 import ProgressBar from './ProgressBar';
 import styled from 'styled-components';
@@ -20,7 +20,7 @@ const Options = () => {
     const [currentSlide, setCurrentSlide] = useState(1);
     const slideRef = createRef(null);
     const TOTAL_SLIDES = 12;
-    const history = useHistory();
+    const navigate = useNavigate();
     const [mbti, setMbti] = useState([]);
 
     const nextSlideFir = () => {
@@ -54,7 +54,7 @@ const Options = () => {
         }
 
         const examResult = result.join(''); // result 배열 합쳐서 문자열로 변환
-        history.push(`/result/${examResult}`); //result(표현식으로 문자열 저장)로 값 전달하기
+        navigate(`/result/${examResult}`); //result(표현식으로 문자열 저장)로 값 전달하기
     };
     useEffect(() => {
         currentSlide > TOTAL_SLIDES && mbtiChecker();
