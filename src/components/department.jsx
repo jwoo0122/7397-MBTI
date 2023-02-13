@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Department from '../api/mbtiApi';
 import styled from 'styled-components';
