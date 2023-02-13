@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Department from '../api/mbtiApi';
+import { Link, useMatch } from 'react-router-dom';
+import departmentApi from '../api/mbtiApi';
 import styled from 'styled-components';
 
 const SearchBtn = styled.button`
@@ -26,9 +26,10 @@ const handle = () => {
     }
 };
 
-const Profile = ({ match }) => {
+const Department = () => {
+    const match = useMatch('/result/:departmentName');
     const { departmentName } = match.params;
-    const nation = Department[departmentName];
+    const nation = departmentApi[departmentName];
     const imagestyle = {
         height: '500px',
         width: '400px',
@@ -65,4 +66,4 @@ const Profile = ({ match }) => {
         </div>
     );
 };
-export default Profile;
+export default Department;
