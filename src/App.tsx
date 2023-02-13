@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from '../src/components/home';
+import Home from './components/home';
 import Options from './components/option';
-import Department from '../src/components/department';
+import Department from './components/department';
 
-class app extends Component {
+interface Props {
+    test: string;
+}
+
+class App extends React.Component<Props> {
     render() {
+        const { test } = this.props;
+        console.log({ test });
+
         return (
             <BrowserRouter>
                 <Routes>
-                    <Route exact path="/" element={<Home />} />
-                    <Route exact path="/departmentMBTI" element={<Options />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/departmentMBTI" element={<Options />} />
                     <Route
                         path="/result/:departmentName"
                         element={<Department />}
@@ -21,4 +28,4 @@ class app extends Component {
     }
 }
 
-export default app;
+export default App;
